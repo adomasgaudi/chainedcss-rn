@@ -1,103 +1,96 @@
-# TSDX User Guide
+<p align="center">
+  <a href="https://github.com/adomasgaudi/Chainedcss" target="_blank">
+    <h1 align="center">ChainedCSS-RN</h1>
+  </a>
+</p>
+<p align="center">
+    Minimalistic <strong>Method Chaining CSS</strong> - TailwindStyle for React Native
+<br/>
+    <a href="https://github.com/adomasgaudi/chainedcss-rn">github</a>
+    <a href="https://www.npmjs.com/package/chainedcss-rn">npm</a>
+</p>
 
-Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
+---
 
-> This TSDX setup is meant for developing libraries (not apps!) that can be published to NPM. If you’re looking to build a Node app, you could use `ts-node-dev`, plain `ts-node`, or simple `tsc`.
+# Installation
 
-> If you’re new to TypeScript, checkout [this handy cheatsheet](https://devhints.io/typescript)
-
-## Commands
-
-TSDX scaffolds your new library inside `/src`.
-
-To run TSDX, use:
-
-```bash
-npm start # or yarn start
-```
-
-This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
-
-To do a one-off build, use `npm run build` or `yarn build`.
-
-To run tests, use `npm test` or `yarn test`.
-
-## Configuration
-
-Code quality is set up for you with `prettier`, `husky`, and `lint-staged`. Adjust the respective fields in `package.json` accordingly.
-
-### Jest
-
-Jest tests are set up to run with `npm test` or `yarn test`.
-
-### Bundle Analysis
-
-[`size-limit`](https://github.com/ai/size-limit) is set up to calculate the real cost of your library with `npm run size` and visualize the bundle with `npm run analyze`.
-
-#### Setup Files
-
-This is the folder structure we set up for you:
-
-```txt
-/src
-  index.tsx       # EDIT THIS
-/test
-  blah.test.tsx   # EDIT THIS
-.gitignore
-package.json
-README.md         # EDIT THIS
-tsconfig.json
-```
-
-### Rollup
-
-TSDX uses [Rollup](https://rollupjs.org) as a bundler and generates multiple rollup configs for various module formats and build settings. See [Optimizations](#optimizations) for details.
-
-### TypeScript
-
-`tsconfig.json` is set up to interpret `dom` and `esnext` types, as well as `react` for `jsx`. Adjust according to your needs.
-
-## Continuous Integration
-
-### GitHub Actions
-
-Two actions are added by default:
-
-- `main` which installs deps w/ cache, lints, tests, and builds on all pushes against a Node and OS matrix
-- `size` which comments cost comparison of your library on every pull request using [`size-limit`](https://github.com/ai/size-limit)
-
-## Optimizations
-
-Please see the main `tsdx` [optimizations docs](https://github.com/palmerhq/tsdx#optimizations). In particular, know that you can take advantage of development-only optimizations:
+<br>
+Install these packages:
+<br>
 
 ```js
-// ./types/index.d.ts
-declare var __DEV__: boolean;
+// for npm
+npm i chainedcss-rn
 
-// inside your code...
-if (__DEV__) {
-  console.log('foo');
-}
+// for yarn
+yarn add chainedcss-rn
+
+// for pnpm
+pnpm add chainedcss-rn
 ```
 
-You can also choose to install and use [invariant](https://github.com/palmerhq/tsdx#invariant) and [warning](https://github.com/palmerhq/tsdx#warning) functions.
+<br>
+<br>
 
-## Module Formats
+## Usage for React and Next (up to Next.js 12)
 
-CJS, ESModules, and UMD module formats are supported.
+At the top of every component
 
-The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
+```js
+import _ from 'chainedcss-rn';
+```
 
-## Named Exports
+<br>
+<br>
+<br>
 
-Per Palmer Group guidelines, [always use named exports.](https://github.com/palmerhq/typescript#exports) Code split inside your React app instead of your React library.
+# Rationale
 
-## Including Styles
+**✨ You already know how to use it** - for the majority of basic styles ChainedCSS uses identical styling to Tailwind, to make sure users don't have to relearn everything again.
 
-There are many ways to ship styles, including with CSS-in-JS. TSDX has no opinion on this, configure how you like.
+**✨ The power of objects and methods** - utilise the full power of js using objects and methods. Flexibility and Programability, far beyond css.
 
-For vanilla CSS, you can include it at the root directory and add it to the `files` section in your `package.json`, so that it can be imported separately by your users and run through their bundler's loader.
+**✨ Clean minimalistic look** - ChainedCSS avoids all uneccesary symbols and extra code to bring css in js as close as possible to Tailwind css. CSS is too long, we've come to realise this after Tailwind became so popular. JSS, CSS in JS is even worse. ChainedCSS fixes this.
 
-## Publishing to NPM
+**✨ Custom functions** - Tailwind only has pre-determined classes. Is that a bug or a feature? If you thinks that is a feature then use ChainedCSS styles which are basically the same, however if the user wants to, she can customize many of them, because they are functions and can receive an input.
 
-We recommend using [np](https://github.com/sindresorhus/np).
+<br>
+
+# Get Started
+
+**✨ Use Tailwind-ish styles** - for the majority of basic styles ChainedCSS uses identical styling to Tailwind, to make sure users don't have to relearn everything again.
+
+```js
+import _ from 'chainedcss-rn';
+
+const Component = () => {
+  return (
+    <View style={_.h(10).s}>Hello</View>
+    <View 
+      style={_.h(10).bg('red').justify('center').s} 
+    >
+      Hello
+    </View>
+  );
+};
+
+export default Component;
+```
+
+<br>
+<br>
+<br>
+
+**✨ Use numbers and variables in the styles functions or just add the value to the name like in tailwind**
+
+```js
+const heightX = 4;
+return (
+  <View style={_.h(heightX).s}>Hello</View>
+);
+```
+
+<br>
+<br>
+<br>
+
